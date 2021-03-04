@@ -44,9 +44,9 @@
         ?>
         <tr>
             <td><?php echo $iteration; $iteration++; ?></td>
-            <td><?php echo $data['name']; ?></td>
+            <td><?php $projectName = $data['name']; echo $projectName; ?></td>
             <td><?php if($data['done'] == 0) : ?>
-            Project is not complete yet! <button class="continue">Complete Project</button>
+            Project is not complete yet! <button class="continue" onclick="getName('<?php echo $projectName ?>')">Complete Project</button>
             <?php else : ?>
             Project has been completed!
             <?php endif ?></td>
@@ -58,4 +58,5 @@
     require_once 'inc/footer.php';
 ?>
 <script src="assets/js/addProject.js"></script>
+<script src="assets/js/linkPage.js"></script>
 </html>
