@@ -7,3 +7,4 @@
 ?>
 
 <script src="../assets/js/addTask.js"></script>
+<script src="../assets/js/checkIfDone.js"></script>

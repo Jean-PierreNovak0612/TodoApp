@@ -52,7 +52,7 @@
                 $data .= '<?php ';
                 $data .= '$con = DB::getConnection(); ';
                 $data .= '$projectName = "'.$name.'"; ';
-                $data .= '$getTask = $con->prepare("SELECT task, done FROM tasks WHERE project = :project"); ';
+                $data .= '$getTask = $con->prepare("SELECT id, task, done FROM tasks WHERE project = :project"); ';
                 $data .= '$getTask->bindParam(":project", $projectName, PDO::PARAM_STR); ';
                 $data .= '$getTask->execute(); ';
                 $data .= '$iteration = 1; ';
@@ -60,10 +60,10 @@
                 $data .= '<tr> ';
                 $data .= '<td><?php echo $iteration; $iteration++; ?></td> ';
                 $data .= '<td><?php echo $data["task"]; ?></td> ';
-                $data .= '<td><?php if($data["done"] == 0) : ?> ';
-                $data .= '<input type="checkbox"> ';
+                $data .= '<td><?php $id = $data["id"]; if($data["done"] == 0) : ?> ';
+                $data .= '<input type="checkbox" id="<?php echo $id; ?>"> ';
                 $data .= '<?php else : ?> ';
-                $data .= '<input type="checkbox" checked> ';
+                $data .= '<input type="checkbox" checked id="<?php echo $id; ?>"> ';
                 $data .= '<?php endif ?> ';
                 $data .= '</tr> ';
                 $data .= '<?php endwhile ?> ';
