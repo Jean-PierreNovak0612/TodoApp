@@ -66,6 +66,27 @@
 
                 // Using the exex() function because no results are returned
                 $con->exec($sql);
+
+                // Checking if all the tasks have been completed
+                $checkIfDone = $con->prepare('SELECT done FROM tasks WHERE project = :project');
+                $checkIfDone->bindParam(':project', $projectName, PDO::PARAM_STR);
+                $checkIfDone->execute();
+                $notdone = 0;
+                while($data = $checkIfDone->fetch()){
+                    if($data['done'] == 0){
+                        $notdone++;
+                    }
+                }
+                if($notdone == 0){
+                    $done = $con->prepare('UPDATE projects SET done = 1 WHERE name = :name');
+                    $done->bindParam(':name', $projectName, PDO::PARAM_STR);
+                    $done->execute();
+                }
+                else{
+                    $done = $con->prepare('UPDATE projects SET done = 0 WHERE name = :name');
+                    $done->bindParam(':name', $projectName, PDO::PARAM_STR);
+                    $done->execute();
+                }
             }
         }
 

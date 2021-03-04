@@ -48,7 +48,7 @@
             <td><?php if($data['done'] == 0) : ?>
             Project is not complete yet! <button class="continue" onclick="getName('<?php echo $projectName ?>')">Complete Project</button>
             <?php else : ?>
-            Project has been completed!
+            Project has been completed! <button class="continue" onclick="getName('<?php echo $projectName ?>')">See tasks</button>
             <?php endif ?></td>
         </tr>
         <?php endwhile ?>

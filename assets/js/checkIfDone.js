@@ -12,6 +12,7 @@ $('input[type="checkbox"').on('change', function(event){
     var objData = {
         id : itemId,
         check : checked,
+        prname : $('title').text(),
     }
     console.log(objData)
     $.ajax({
