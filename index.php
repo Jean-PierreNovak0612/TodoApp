@@ -19,6 +19,8 @@
         <label for="projectName"><h3>Enter the name of the project</h3></label>
         <input type="text" id="projectName" placeholder="MyProject" required="required">
         <button type="submit">Enter project</button>
+        <div class="succes" style="display:none"></div>
+        <div class="error" style="display:none"></div>
     </form>
 </body>
 <?php
