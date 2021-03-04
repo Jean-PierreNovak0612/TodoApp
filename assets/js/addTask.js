@@ -15,7 +15,7 @@ $(document).on('submit', 'form.addtolist', function(event){
         dataType: 'json', 
         data: objData,
         type: 'POST',
-        url: 'ajax/addTask.php',
+        url: '../ajax/addTask.php',
         async: true,
     })
     // Function will be executed if there were no errors on the way

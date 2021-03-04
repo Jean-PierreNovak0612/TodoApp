@@ -59,8 +59,8 @@
                 // Create the table 
                 $sql = 'CREATE TABLE tasks (
                 id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                project VARCHAR(255) UNIQUE NOT NULL,
-                task VARCHAR(255) UNIQUE NOT NULL,
+                project VARCHAR(255) NOT NULL,
+                task VARCHAR(255) NOT NULL,
                 done TINYINT(1) NOT NULL
                 )';
 
