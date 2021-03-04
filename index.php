@@ -19,9 +19,37 @@
         <label for="projectName"><h3>Enter the name of the project</h3></label>
         <input type="text" id="projectName" placeholder="MyProject" required="required">
         <button type="submit">Enter project</button>
-        <div class="succes" style="display:none"></div>
+        <div class="success" style="display:none;"></div>
         <div class="error" style="display:none"></div>
     </form>
+
+    <!-- This table will display all currentaly existing projects in the database -->
+    <table>
+        <tr>
+            <th>Project priority</th>
+            <th>Project name</th>
+            <th>Project completion</th>
+        </tr>
+        <?php
+            // Getting all project names and their completion levels from database
+            $con = DB::getConnection();
+            $getProjects = $con->prepare("SELECT name, done FROM projects");
+            $getProjects->execute();
+            $itteration = 1;
+            // Display all the projects and their comptetion levels
+            while($data = $getProjects->fetch()) :
+        ?>
+        <tr>
+            <td><?php echo $itteration; $itteration++; ?></td>
+            <td><?php echo $data['name']; ?></td>
+            <td><?php if($data['done'] == 0) : ?>
+            Project is not complete yet! <button class="continue">Complete Project</button>
+            <?php else : ?>
+            Project has been completed!
+            <?php endif ?></td>
+        </tr>
+        <?php endwhile ?>
+    </table>
 </body>
 <?php
     require_once 'inc/footer.php';
