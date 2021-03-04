@@ -17,7 +17,7 @@
 
             // Testing if database exists
             try{
-                include_once 'databasedata.php';
+                include 'databasedata.php';
                 self::$con = new PDO('mysql:charset=utf8mb4;host='.$hostName.';port='.$portNumber.';dbname='.$databaseName, $userName, $userPassword);
                 self::$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
                 self::$con->setAttribute( PDO::ATTR_PERSISTENT, false);

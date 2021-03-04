@@ -21,17 +21,17 @@
         $con = DB::getConnection();
         
         // Checking if the project table exists
-        $existsTable = Test::PojectTable();
+        $existsTable = Test::ProjectTable();
 
         // Checking if the project with the same name exists
 
         $exists = Test::ProjectName($projectName);
 
-        if($exists){
+        if(!$exists){
             $addProject = $con->prepare("INSERT INTO projects (name, done) VALUES (?, ?)");
             $addProject->execute([
                 $projectName,
-                true,
+                false,
             ]);
             $return['success'] = 'The project has been succesfully added to the list!';
         }
