@@ -5,5 +5,3 @@
         exit('Could not load the configuration file');
     }
 ?>
-
-<script src="assets/js/addProject.js"></script>

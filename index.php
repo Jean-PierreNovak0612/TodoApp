@@ -4,6 +4,9 @@
     
     // Including the config file
     require_once 'inc/config.php';
+
+    // Checking if the project table exists
+    Test::ProjectTable();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,12 +38,12 @@
             $con = DB::getConnection();
             $getProjects = $con->prepare("SELECT name, done FROM projects");
             $getProjects->execute();
-            $itteration = 1;
+            $iteration = 1;
             // Display all the projects and their comptetion levels
             while($data = $getProjects->fetch()) :
         ?>
         <tr>
-            <td><?php echo $itteration; $itteration++; ?></td>
+            <td><?php echo $iteration; $iteration++; ?></td>
             <td><?php echo $data['name']; ?></td>
             <td><?php if($data['done'] == 0) : ?>
             Project is not complete yet! <button class="continue">Complete Project</button>
@@ -54,4 +57,5 @@
 <?php
     require_once 'inc/footer.php';
 ?>
+<script src="assets/js/addProject.js"></script>
 </html>

@@ -19,13 +19,11 @@
 
         // Getting the database connection
         $con = DB::getConnection();
-        
-        // Checking if the project table exists
-        $existsTable = Test::ProjectTable();
 
         // Checking if the project with the same name exists
 
         $exists = Test::ProjectName($projectName);
+        Pages::NewPage($projectName);
 
         if(!$exists){
             $addProject = $con->prepare("INSERT INTO projects (name, done) VALUES (?, ?)");

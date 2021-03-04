@@ -5,6 +5,7 @@
         // Including the file that will allow us to connect to the database
         include_once 'classes/DB.php';
         include_once 'classes/Test.php';
+        include_once 'classes/Pages.php';
 
         // Creating database connection
         $con = DB::getConnection();
